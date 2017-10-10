@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ua.bellkross.bellshedule.MainActivity">
+    tools:context="ua.bellkross.intentandactivity.MainActivity">
 
     <ImageView
         android:id="@+id/ivPhoto"
@@ -27,48 +27,68 @@
         android:hint="Name"
         android:inputType="textPersonName"
         app:layout_constraintLeft_toRightOf="@+id/ivPhoto"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
         android:id="@+id/etSurname"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Surname"
+        android:inputType="textPersonName"
         app:layout_constraintLeft_toRightOf="@+id/ivPhoto"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <EditText
         android:id="@+id/etNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="-1dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Number"
-        app:layout_constraintTop_toBottomOf="@+id/etSurname"
-        app:layout_constraintLeft_toRightOf="@+id/ivPhoto" />
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toRightOf="@+id/ivPhoto"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSurname" />
 
     <EditText
         android:id="@+id/etAge"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Age"
-        app:layout_constraintTop_toBottomOf="@+id/etNumber"
-        app:layout_constraintLeft_toLeftOf="@+id/etNumber" />
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toLeftOf="@+id/etNumber"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNumber" />
 
     <EditText
         android:id="@+id/etSocialNetwork"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Social network"
-        app:layout_constraintTop_toBottomOf="@+id/etAge"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineImageViewH"
         app:layout_constraintLeft_toLeftOf="@+id/etNumber"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineImageViewH" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAge"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/etAbout"

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText etName, etSurname, etNumber, etAge, etSocialNetwork, etAbout;
     private Button btnSend, btnClear;
     private ImageView ivPhoto;
+    private String currentPhoto;
+    private String LOG_TAG = "debug";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btnClear = (Button) findViewById(R.id.btnClear);
 
         ivPhoto = (ImageView) findViewById(R.id.ivPhoto);
+        currentPhoto = new String("nouri");
     }
 
     public void pickPhoto(View view){
@@ -43,11 +47,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-        Uri selectedImage = imageReturnedIntent.getData();
-        ivPhoto.setImageURI(selectedImage);
+        currentPhoto = imageReturnedIntent.getData().toString();
+        ivPhoto.setImageURI(Uri.parse(currentPhoto));
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     public void send(View view){
+        Intent intent = new Intent(this, InformationActivity.class);
+        intent.putExtra("etName", etName.getText().toString());
+        intent.putExtra("etSurname", etSurname.getText().toString());
+        intent.putExtra("etNumber", etNumber.getText().toString());
+        intent.putExtra("etAge", etAge.getText().toString());
+        intent.putExtra("etSocialNetwork", etSocialNetwork.getText().toString());
+        intent.putExtra("etAbout", etAbout.getText().toString());
+        intent.putExtra("photoUri", currentPhoto.toString());
+        startActivity(intent);
+        this.finish();
     }
 
     public void clear(View view){
