@@ -13,7 +13,6 @@ public class InformationActivity extends AppCompatActivity {
 
     private TextView tvName, tvSurname, tvNumber, tvAge, tvSocialNetwork, tvAbout;
     private ImageView ivSecondPhoto;
-    private Button btnBack;
     private String photoUri;
 
     @Override
@@ -29,8 +28,6 @@ public class InformationActivity extends AppCompatActivity {
         tvAbout = (TextView) findViewById(R.id.tvAbout);
 
         ivSecondPhoto = (ImageView) findViewById(R.id.ivSecondPhoto);
-
-        btnBack = (Button) findViewById(R.id.btnBack);
 
         download();
     }
