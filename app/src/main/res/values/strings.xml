@@ -1,3 +1,19 @@
 <resources>
+    <!--Text on element's-->
     <string name="app_name">IntentAndActivity</string>
+    <string name="etname">Name</string>
+    <string name="etsurname">Surname</string>
+    <string name="etnumber">Number</string>
+    <string name="etage">Age</string>
+    <string name="etabout">Some information about you . . .</string>
+    <string name="btnsend">Send</string>
+    <string name="btnclear">Clear</string>
+    <!--Menu text-->
+    <string name="photo_box">Photo</string>
+    <string name="name_box">Name</string>
+    <string name="surname_box">Surname</string>
+    <string name="number_box">Number</string>
+    <string name="age_box">Age</string>
+    <string name="snetwork_box">Social network</string>
+    <string name="about_box">About</string>
 </resources>
