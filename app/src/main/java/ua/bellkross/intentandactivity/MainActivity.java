@@ -217,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void notifyCheck(String[] values, boolean checkRes){
         String notifyText = "";
+        String title = "";
 
         int notifyElems = 0;
         for (int i = 1; i < values.length; i++)
@@ -252,40 +253,44 @@ public class MainActivity extends AppCompatActivity {
                     notifyElems++;
             }
 
-            if(notifyElems==0){
+            if(notifyElems==0&&!notify[0]){
                 return;
             }else {
-                //if(notify[0]) add custom photo in notifier
                 if (notifyElems > 1) {
                     notifyText += " and ( " + (notifyElems - 1) + " )";
-                    if (!checkRes)
-                        notifyText += " but u left on main activity...";
                 }
-                pushNotification(notifyText, 1, "Think about it");
+                if (!checkRes)
+                    title = "You left in main activity";
+                else
+                    title = "You go to inf activity";
+
+                pushNotification("U have a news . . .", title, notifyText, 12345, notify[0]);
             }
 
     }
 
-    private void pushNotification(String notifyText, int id, String title){
-        Notification.Builder notification = new Notification.Builder(this)
-                .setContentTitle(title)
-                .setContentText(notifyText)
-                .setSmallIcon(R.drawable.notification_icon);
+    private void pushNotification(String tricker, String title, String body, int id, boolean addActionPhoto){
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(this);;
+        //build the notification
+        notification.setSmallIcon(R.mipmap.ic_notify);
+        notification.setTicker(tricker);
+        notification.setContentTitle(title);
+        notification.setContentText(body);
+        notification.setWhen(System.currentTimeMillis());
+        notification.setAutoCancel(true);
+        //Без этой дичи,     впринципе, оно работает, но не будет переходить на экран при нажатии
+        Intent intent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Intent resultIntent = new Intent(this, MainActivity.class);
+        if(addActionPhoto)
+            notification.addAction(R.mipmap.ic_notify, "Add photo", pendingIntent);
+        notification.setContentIntent(pendingIntent);
 
-        PendingIntent resultPendingIntent =
-                PendingIntent.getActivity(
-                        this,
-                        0,
-                        resultIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                );
 
-        notification.setContentIntent(resultPendingIntent);
-        NotificationManager mNotifyMgr =
+        //builds notification and issues it
+        NotificationManager notificationManager =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotifyMgr.notify(id, notification.build());
+        notificationManager.notify(id, notification.build());
     }
 
 }
